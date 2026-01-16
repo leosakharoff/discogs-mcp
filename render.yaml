@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: discogs-mcp
+    runtime: python
+    region: frankfurt
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m src.server_remote
+    envVars:
+      - key: DISCOGS_TOKEN
+        sync: false
+      - key: DISCOGS_USERNAME
+        sync: false
+      - key: PORT
+        value: 8000
